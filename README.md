@@ -5,7 +5,7 @@ Este repositorio recopila informacion y codigos de la materia de Análisis Numé
 ## Temas
 
 1. 1er Parcial
-    - Método de Bisección
-    - Método de Newton-Raphson (Tangente)
-    - Método de Newton-Raphson para raices complejas
-    - Método de la secante
+    - [Método de Bisección](./metodo-biseccion.md)
+    - [Método de Newton-Raphson](./metodo-newton-raphson.md)
+    - [Método de Newton-Raphson para raices complejas](./metodo-newton-raphson-complejos.md)
+    - [Método de la secante](./metodo-secante.md)
