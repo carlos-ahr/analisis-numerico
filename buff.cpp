@@ -1,43 +1,29 @@
 #include <iostream>
-#include <cmath>
+#include <iomanip>
+#include <string>
+
 using namespace std;
-class biseccion{
-    double xi, xf, err;
-    int n;
-    public:
-        biseccion();
-        void leer_datos(double, double, int);
-        double f(double);
-        void calc_raiz();
-        ~biseccion();
-
-};
-void biseccion::leer_datos(double i, double f, int num, double e){
-    xi=i;
-    xf=f;
-    n=num;
-    e=err;
-
-}
-double biseccion::f(double x){
-    return pow(x, 2)-2;
-}
-void biseccion::calc_raiz(){
-    if(f(xi)*f(xf)<0){
-        for(while n>0){
-            double xm=(xi+xf)/2;
-            if (f(xi)*f(xm)<0){
-                xf=xm;
-
-            }
-            else if(f(xi)*f(xm)>0){
-                xi=xm;
-
-            }
-        }
-    }
-}
-
-int main(){
-return 0;
+/*
++-----+------+------+---------+---------+--------------+------+---------+--------------+---------+
+|  n  |  xi  |  xf  |  f(xi)  |  f(xf)  |  f(xi)f(xf)  |  xm  |  f(xm)  |  f(xi)f(xm)  |  Error  |
++-----+------+------+---------+---------+--------------+------+---------+--------------+---------+
+*/
+int main(void){
+    string sepH = "+-----+------+------+---------+---------+--------------+------+---------+--------------+---------+";
+    string sepV = "  |  ";
+    string h1, h2, h3, h4, h5, h6, h7, h8, h9, h10;
+    h1 = "n";
+    h2= "xi";
+    h3 = "xf";
+    h4 = "f(xi)";
+    h5 = "f(xf)";
+    h6 = "f(xi)f(xf)";
+    h7 = "xm";
+    h8 = "f(xm)";
+    h9 = "f(xi)f(xm)";
+    h10 = "Error";
+    cout<<sepH<<endl
+        <<"|  "<<h1<<sepV<<h2<<sepV<<h3<<sepV<<h4<<sepV<<h5<<sepV<<h6<<sepV<<h7<<sepV<<h8<<sepV<<h9<<sepV<<h10<<"  |\n"
+        <<sepH<<endl; 
+    return 0;
 }
