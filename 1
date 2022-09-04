@@ -1,0 +1,188 @@
+/*
++-----+------+------+---------+---------+--------------+------+---------+--------------+---------+
+|  n  |  xi  |  xf  |  f(xi)  |  f(xf)  |  f(xi)f(xf)  |  xm  |  f(xm)  |  f(xi)f(xm)  |  Error  |
++-----+------+------+---------+---------+--------------+------+---------+--------------+---------+
+*/
+
+
+#include <iostream>
+#include <iomanip>
+#include <ostream>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+string linea = "+-----+------+------+---------+---------+--------------+------+---------+--------------+---------+";
+string separador = "  |  ";
+string t0 = "n";
+string t1 = "Xi";
+string t2 = "Xf";
+string t3 = "f(Xi)";
+string t4 ="f(Xf)";
+string t5 = "f(Xi)f(Xf)";
+string t6 = "Xm";
+string t7 = "f(Xm)";
+string t8 = "f(Xi)f(Xf)";
+string t9 = "Error";
+
+class biseccion{
+    private:
+        double xi, xf, err, error;
+        int n;
+    public:
+        int res;
+        biseccion():xi(0.0), xf(0.0), err(0.0), error(0.0), n(0), res(0){};
+        void leerDatos();
+        double f(double x){return pow(x, 2)-2;}
+        double m(double i, double f){return (i+f)/2;}
+        double e(double i, double m){return abs((m-i)/m);}
+        void calcRaizFOR();
+        void calcRaizDO();
+        ~biseccion(){cout<<"Limpiando memoria :D"<<endl;}
+};
+
+void biseccion::leerDatos(){
+    cout<<"Ingrese el valor inicial:"<<endl;
+    cin>>xi;
+    cout<<"Ingrese el valor final:"<<endl;
+    cin>>xf;
+    cout<<"Ingrese el numero de iteraciones:"<<endl;
+    cin>>n;
+    cout<<"Ingrese el error: "<<endl;
+    cin>>err;
+    cout<<"Desea calcular segun iterador(1) o segun error(2)?"<<endl;
+    cin>>res;
+}
+
+void biseccion::calcRaizFOR(){
+    cout<<linea<<endl
+        <<"|  "<<t0
+        <<separador<<t1
+        <<separador<<t2
+        <<separador<<t3
+        <<separador<<t4
+        <<separador<<t5
+        <<separador<<t6
+        <<separador<<t7
+        <<separador<<t8
+        <<separador<<t9<<"  |"<<endl
+        <<linea<<endl;
+    for(int i = 0; i < n; i++){
+        double fxi = f(xi);
+        double fxf = f(xf);
+        if(fxi*fxf < 0){
+            double xm = m(xi, xf);
+            double fxm = f(xm);
+            error = e(xi, xm);
+            
+            if(fxi*fxm == 0){
+                cout<<"La raiz es: "<<xm<<endl;
+                break;
+            }
+            else if(fxi*fxm < 0){
+                cout<<"|  "<<n
+                <<separador<<xi
+                <<separador<<xf
+                <<separador<<fxi
+                <<separador<<fxf
+                <<separador<<fxi*fxf
+                <<separador<<xm
+                <<separador<<fxm
+                <<separador<<fxi*fxm
+                <<separador<<error<<"  |"<<endl
+                <<linea<<endl;
+                xf = xm;
+            }
+            else if(fxi*fxm > 0){
+                cout<<"|  "<<n
+                <<separador<<xi
+                <<separador<<xf
+                <<separador<<fxi
+                <<separador<<fxf
+                <<separador<<fxi*fxf
+                <<separador<<xm
+                <<separador<<fxm
+                <<separador<<fxi*fxm
+                <<separador<<error<<"  |"<<endl
+                <<linea<<endl;
+                xi = xm;
+            }
+        }
+        else{
+            cout<<"Intervalo invalido :c"<<endl;
+        }
+    }
+}
+
+void biseccion::calcRaizDO(){
+    cout<<linea<<endl
+        <<"|  "<<t0
+        <<separador<<t1
+        <<separador<<t2
+        <<separador<<t3
+        <<separador<<t4
+        <<separador<<t5
+        <<separador<<t6
+        <<separador<<t7
+        <<separador<<t8
+        <<separador<<t9<<"  |"<<endl
+        <<linea<<endl;
+	do{
+		double fxi=f(xi);
+		double fxf=f(xf);
+		if(fxi*fxf<0){
+			double xm=m(xi, xf);
+			double fxm=f(xm);
+			error=e(xm, xi);
+			if(fxi*fxm==0){
+				cout<<"La raiz es: "<<xm<<endl;
+				break;
+			}
+			else if(fxi*fxm<0){
+				cout<<"Xi: "<<xi<<endl;
+				cout<<"Xf: "<<xf<<endl;
+				cout<<"F(Xi): "<<fxi<<endl;
+				cout<<"F(Xf): "<<fxf<<endl;
+				cout<<"F(Xi)F(Xf): "<<fxi*fxf<<endl;
+				cout<<"Xm: "<<xm<<endl;
+				cout<<"F(Xm): "<<fxm<<endl;
+				cout<<"F(Xi)F(Xm): "<<fxi*fxm<<endl;
+				cout<<"Error: "<<error<<"%"<<endl<<endl;
+				xf=xm;
+			}
+			else if(fxi*fxm>0){
+				cout<<"Xi: "<<xi<<endl;
+				cout<<"Xf: "<<xf<<endl;
+				cout<<"F(Xi): "<<fxi<<endl;
+				cout<<"F(Xf): "<<fxf<<endl;
+				cout<<"F(Xi)F(Xf): "<<fxi*fxf<<endl;
+				cout<<"Xm: "<<xm<<endl;
+				cout<<"F(Xm): "<<fxm<<endl;
+				cout<<"F(Xi)F(Xm): "<<fxi*fxm<<endl;
+				cout<<"Error: "<<error<<"%"<<endl<<endl;
+				xi=xm;	
+			}
+		}
+		else{
+			cout<<"Intervalo invalido :c"<<endl;
+		}
+	}while(error>err);
+}
+
+int main(void){
+    
+    biseccion raiz;
+    raiz.leerDatos();
+    if(raiz.res == 1){
+        raiz.calcRaizFOR();
+    }
+    else if(raiz.res == 2){
+        raiz.calcRaizDO();
+    }
+    else {
+    cout<<"Opcion invalida :c"<<endl;
+    }
+    return 0;
+}
+
