@@ -6,7 +6,7 @@
     - $f(x)$.
     - $[x_i,x_f]$.
     - $n$.
-    - $E_r$i.
+    - $E_r$.
 2. Evaluar
     - Si $f(x_i)f(x_f)<0\to$ La raiz esta en el intervalo.
     - Si $f(x_i)f(x_f)>0\to$ La raiz no esta en el intervalo.
@@ -19,5 +19,19 @@
 5. Evaluar
     - $|\frac{X_i-x_m}{x_m}|\cdot 100 < E_r\to x_m$ es la raiz.
 6. Iterar de [3] a [5] n veces.
+
+```cpp
+//Ejemplo de codigo
+#include<iostream>
+#include<iomanip>
+#include<cmath
+
+using namespace std;
+
+int main(void){
+    cout<<"Hola mundo!"<<endl;
+    return 0;
+}
+```
 
 > Nota: Si f(x) es una funcion trigonometrica utilizar radianes.
