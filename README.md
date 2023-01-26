@@ -13,5 +13,5 @@ Este repositorio recopila informacion y codigos de la materia de Análisis Numé
 ---
 
 $$
-1/6(k1+2k2+2k3+k4)
+{1}/{6}(k1+2k2+2k3+k4)
 $$
