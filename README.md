@@ -9,3 +9,9 @@ Este repositorio recopila informacion y codigos de la materia de Análisis Numé
     - [Método de Newton-Raphson](./metodo-newton-raphson.md)
     - [Método de Newton-Raphson para raices complejas](./metodo-newton-raphson-complejos.md)
     - [Método de la secante](./metodo-secante.md)
+
+---
+
+$$
+1/6(k1+2k2+2k3+k4)
+$$
